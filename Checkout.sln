@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout", "Checkout\Checkout.csproj", "{DEFA1051-6DAE-4DAB-970B-7E4B11C40A1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutUnitTests", "CheckoutUnitTests\CheckoutUnitTests.csproj", "{B2078220-ECD4-4C83-BD78-5F343443A441}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEFA1051-6DAE-4DAB-970B-7E4B11C40A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFA1051-6DAE-4DAB-970B-7E4B11C40A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFA1051-6DAE-4DAB-970B-7E4B11C40A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFA1051-6DAE-4DAB-970B-7E4B11C40A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2078220-ECD4-4C83-BD78-5F343443A441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2078220-ECD4-4C83-BD78-5F343443A441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2078220-ECD4-4C83-BD78-5F343443A441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2078220-ECD4-4C83-BD78-5F343443A441}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
