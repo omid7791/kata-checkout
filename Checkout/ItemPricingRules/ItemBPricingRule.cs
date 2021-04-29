@@ -8,9 +8,10 @@ namespace Checkout.ItemPricingRules
         public int GetTotalPrice(List<string> items)
         {
             var itemCount = items.Count(item => item == "B");
+            var setsOfTwoCount = itemCount / 2;
             
-            if (itemCount == 2)
-                return 45;
+            if (setsOfTwoCount > 0)
+                return 45 * setsOfTwoCount;
             
             return 30 * itemCount;
         }
