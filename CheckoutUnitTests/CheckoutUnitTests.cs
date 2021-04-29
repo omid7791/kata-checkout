@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace CheckoutUnitTests
@@ -20,6 +22,23 @@ namespace CheckoutUnitTests
             
             // assert
             Assert.Equal(expectedUnitPrice, actualTotalPrice);
+        }
+        
+        [Theory]
+        [InlineData(new[] { "A", "B", "A", "C"}, 150)]
+        [InlineData(new[] { "B", "A", "C"}, 100)]
+        public void GivenMultipleItemsWithNoSpecialIsScanned_WhenGettingTotalPrice_ShouldEqualSumOfUnitPrices(
+            string[] items, int expectedSumOfUnitPrices)
+        {
+            // given
+            var checkout = new Checkout.Checkout();
+            items.ToList().ForEach(item => checkout.Scan(item));
+            
+            // when
+            var actualTotalPrice = checkout.GetTotalPrice();
+            
+            // assert
+            Assert.Equal(expectedSumOfUnitPrices, actualTotalPrice);
         }
     }
 }

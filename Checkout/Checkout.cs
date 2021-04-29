@@ -24,16 +24,16 @@ namespace Checkout
                 switch (item)
                 {
                     case "A": 
-                        total = 50;
+                        total += 50;
                         break;
                     case "B": 
-                        total = 30;
+                        total += 30;
                         break;
                     case "C": 
-                        total = 20;
+                        total += 20;
                         break;
                     case "D":
-                        total = 15;
+                        total += 15;
                         break;
                 }   
             }
