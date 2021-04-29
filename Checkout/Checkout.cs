@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Checkout
 {
@@ -10,14 +10,35 @@ namespace Checkout
 
     public class Checkout : ICheckout
     {
+        private readonly List<string> _items = new List<string>();
         public void Scan(string item)
         {
-            throw new NotImplementedException();
+            _items.Add(item);
         }
 
         public int GetTotalPrice()
         {
-            throw new NotImplementedException();
+            var total = 0;
+            foreach (var item in _items)
+            {
+                switch (item)
+                {
+                    case "A": 
+                        total = 50;
+                        break;
+                    case "B": 
+                        total = 30;
+                        break;
+                    case "C": 
+                        total = 20;
+                        break;
+                    case "D":
+                        total = 15;
+                        break;
+                }   
+            }
+
+            return total;
         }
     }
 }
