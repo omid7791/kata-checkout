@@ -40,5 +40,23 @@ namespace CheckoutUnitTests
             // assert
             Assert.Equal(expectedSumOfUnitPrices, actualTotalPrice);
         }
+        
+        [Theory]
+        [InlineData(new[] { "A", "A", "A", "C"}, 150)]
+        [InlineData(new[] { "B", "B", "D"}, 60)]
+        [InlineData(new[] { "A", "A", "A", "B", "B", "C"}, 195)]
+        public void GivenMultipleItemsWithSpecialPricingAreScanned_WhenGettingTotalPrice_ShouldEqualCorrectDiscountedPrice(
+            string[] items, int expectedDiscountedPrice)
+        {
+            // given
+            var checkout = new Checkout.Checkout();
+            items.ToList().ForEach(item => checkout.Scan(item));
+            
+            // when
+            var actualTotalPrice = checkout.GetTotalPrice();
+            
+            // assert
+            Assert.Equal(expectedDiscountedPrice, actualTotalPrice);
+        }
     }
 }

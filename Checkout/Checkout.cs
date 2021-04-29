@@ -2,12 +2,6 @@
 
 namespace Checkout
 {
-    public interface ICheckout
-    {
-        void Scan(string item);
-        int GetTotalPrice();
-    }
-
     public class Checkout : ICheckout
     {
         private readonly List<string> _items = new List<string>();
