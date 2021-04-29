@@ -7,6 +7,14 @@ namespace CheckoutUnitTests
 {
     public class CheckoutUnitTests
     {
+        private readonly List<IItemPricingRule> _pricingRules = new List<IItemPricingRule>
+        {
+            new ItemAPricingRule(),
+            new ItemBPricingRule(),
+            new ItemCPricingRule(),
+            new ItemDPricingRule(),
+        };
+
         [Theory]
         [InlineData("A", 50)]
         [InlineData("B", 30)]
@@ -15,13 +23,7 @@ namespace CheckoutUnitTests
         public void GivenAnItemIsScanned_WhenGettingTotalPrice_ShouldEqualUnitPrice(string item, int expectedUnitPrice)
         {
             // given
-            var checkout = new Checkout.Checkout(new List<IItemPricingRule>
-            {
-                new ItemAPricingRule(),
-                new ItemBPricingRule(),
-                new ItemCPricingRule(),
-                new ItemDPricingRule(),
-            });
+            var checkout = new Checkout.Checkout(_pricingRules);
             checkout.Scan(item);
             
             // when
@@ -38,13 +40,7 @@ namespace CheckoutUnitTests
             string[] items, int expectedSumOfUnitPrices)
         {
             // given
-            var checkout = new Checkout.Checkout(new List<IItemPricingRule>
-            {
-                new ItemAPricingRule(),
-                new ItemBPricingRule(),
-                new ItemCPricingRule(),
-                new ItemDPricingRule(),
-            });
+            var checkout = new Checkout.Checkout(_pricingRules);
             items.ToList().ForEach(item => checkout.Scan(item));
             
             // when
@@ -62,13 +58,7 @@ namespace CheckoutUnitTests
             string[] items, int expectedDiscountedPrice)
         {
             // given
-            var checkout = new Checkout.Checkout(new List<IItemPricingRule>
-            {
-                new ItemAPricingRule(),
-                new ItemBPricingRule(),
-                new ItemCPricingRule(),
-                new ItemDPricingRule(),
-            });
+            var checkout = new Checkout.Checkout(_pricingRules);
             items.ToList().ForEach(item => checkout.Scan(item));
             
             // when
