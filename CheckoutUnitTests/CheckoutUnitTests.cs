@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Checkout.ItemPricingRules;
 using Xunit;
 
 namespace CheckoutUnitTests
@@ -14,7 +15,13 @@ namespace CheckoutUnitTests
         public void GivenAnItemIsScanned_WhenGettingTotalPrice_ShouldEqualUnitPrice(string item, int expectedUnitPrice)
         {
             // given
-            var checkout = new Checkout.Checkout();
+            var checkout = new Checkout.Checkout(new List<IItemPricingRule>
+            {
+                new ItemAPricingRule(),
+                new ItemBPricingRule(),
+                new ItemCPricingRule(),
+                new ItemDPricingRule(),
+            });
             checkout.Scan(item);
             
             // when
@@ -31,7 +38,13 @@ namespace CheckoutUnitTests
             string[] items, int expectedSumOfUnitPrices)
         {
             // given
-            var checkout = new Checkout.Checkout();
+            var checkout = new Checkout.Checkout(new List<IItemPricingRule>
+            {
+                new ItemAPricingRule(),
+                new ItemBPricingRule(),
+                new ItemCPricingRule(),
+                new ItemDPricingRule(),
+            });
             items.ToList().ForEach(item => checkout.Scan(item));
             
             // when
@@ -49,7 +62,13 @@ namespace CheckoutUnitTests
             string[] items, int expectedDiscountedPrice)
         {
             // given
-            var checkout = new Checkout.Checkout();
+            var checkout = new Checkout.Checkout(new List<IItemPricingRule>
+            {
+                new ItemAPricingRule(),
+                new ItemBPricingRule(),
+                new ItemCPricingRule(),
+                new ItemDPricingRule(),
+            });
             items.ToList().ForEach(item => checkout.Scan(item));
             
             // when
