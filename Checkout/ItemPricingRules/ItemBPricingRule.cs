@@ -9,15 +9,25 @@ namespace Checkout.ItemPricingRules
         {
             var total = 0;
             var itemCount = items.Count(item => item == "B");
-            var setsOfTwoCount = itemCount / 2;
-            var remainder = itemCount % 2;
-            
-            if (setsOfTwoCount > 0)
-                total += 45 * setsOfTwoCount;
-            
-            total += 30 * remainder;
+
+            total += CalculateDiscountedPricing(itemCount);
+            total += CalculateNoneDiscountedPricing(itemCount);
 
             return total;
+        }
+        
+        private int CalculateNoneDiscountedPricing(int itemCount)
+        {
+            var remainder = itemCount % 2;
+
+            return 30 * remainder;
+        }
+
+        private int CalculateDiscountedPricing(int itemCount)
+        {
+            var setsOfThreeCount = itemCount / 2;
+            
+            return 45 * setsOfThreeCount;
         }
     }
 }
