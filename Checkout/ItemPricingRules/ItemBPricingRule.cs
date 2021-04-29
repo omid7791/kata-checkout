@@ -7,13 +7,17 @@ namespace Checkout.ItemPricingRules
     {
         public int GetTotalPrice(List<string> items)
         {
+            var total = 0;
             var itemCount = items.Count(item => item == "B");
             var setsOfTwoCount = itemCount / 2;
+            var remainder = itemCount % 2;
             
             if (setsOfTwoCount > 0)
-                return 45 * setsOfTwoCount;
+                total += 45 * setsOfTwoCount;
             
-            return 30 * itemCount;
+            total += 30 * remainder;
+
+            return total;
         }
     }
 }

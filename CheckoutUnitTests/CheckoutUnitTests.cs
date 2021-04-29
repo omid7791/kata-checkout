@@ -56,6 +56,8 @@ namespace CheckoutUnitTests
         [InlineData(new[] { "A", "A", "A", "B", "B", "C"}, 195)]
         [InlineData(new[] { "A", "A", "A", "A", "A", "A"}, 260)]
         [InlineData(new[] { "B", "B", "B", "B"}, 90)]
+        [InlineData(new[] { "B", "B", "B"}, 75)]
+        [InlineData(new[] { "A", "A", "A", "A"}, 180)]
         public void GivenMultipleItemsWithSpecialPricingAreScanned_WhenGettingTotalPrice_ShouldEqualCorrectDiscountedPrice(
             string[] items, int expectedDiscountedPrice)
         {
